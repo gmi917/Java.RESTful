@@ -22,6 +22,7 @@ import com.ar.json.bean.PageInfo;
 import com.ar.json.bean.PrizeOrder;
 import com.ar.json.bean.RatingStarPrize;
 import com.ar.json.bean.TotalPoint;
+import com.ar.json.bean.UserLoginLog;
 import com.ar.json.bean.UserPrize;
 import com.ar.json.service.UserService;
 
@@ -127,7 +128,13 @@ public class ListPrizeController {
 			}
 		}else {
 			return "{\"result\":\"1\",\"message\":\"parameter is null\"}";	
+		}		
+	}
+	
+	@RequestMapping(value = "/UseLoginLog",method = RequestMethod.POST,consumes="application/json")
+	public @ResponseBody void UseLoginLog(@RequestBody UserLoginLog userLoginLog){
+		if(userLoginLog.getUserAccount()!=null && !userLoginLog.getUserAccount().equals("")) {
+			userService.insertUserLoginLog(userLoginLog.getUserAccount());			
 		}
-		
 	}
 }

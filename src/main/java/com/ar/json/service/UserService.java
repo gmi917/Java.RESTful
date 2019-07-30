@@ -203,5 +203,10 @@ public class UserService {
     	    }
     	});
 	}
+	
+	public void insertUserLoginLog(String UserAccount) {
+		String sql="insert into UseLoginLog (UserAccount) values(?)";
+		jdbcTemplate.update(sql,new Object[]{UserAccount});
+	}
 
 }
